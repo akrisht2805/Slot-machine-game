@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const Slot = (props) =>{
+    // let x = props.x;
+    // let y = props.y;
+    // let z = props.z;
+
+    let {x,y,z}=props;
+
+    if( (x===y) && (y===z)){
+        return (
+            <>
+                <div className="slot_inner">
+                    <h1>{x}{y}{z}</h1>
+                    <h1>This is Matching.</h1>
+                    <hr />
+                </div>
+            </>
+        )
+    }else{
+        return (
+            <>
+                <div className="slot_inner">
+                    <h1>{x}{y}{z}</h1>
+                    <h1>This is Not Matching.</h1>
+                    <hr />
+                </div>
+            </>
+        )
+    }
+}
+
+const App = () =>{
+    return(
+        <>
+            <h1 className="heading_style">
+                Welcome to <span style={{fontWeight : 'bold'}}>Slot machine game</span> 
+            </h1>
+            <div className="slotmachine">
+            <Slot x="😄" y="😄" z="😄"/>
+            <hr />
+            <Slot x="😁" y="😆" z="😅"/>
+            <hr />
+            <Slot x="🍎" y="🍌" z="🍎"/>
+            <hr />
+            <Slot x="🧁" y="🧁" z="🧁"/>
+            <hr />
+            </div>
+        </>
+    )
 }
 
 export default App;
